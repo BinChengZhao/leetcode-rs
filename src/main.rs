@@ -2,6 +2,7 @@ mod algorithms;
 mod thread;
 use algorithms::a1::two_sum;
 use algorithms::a55::can_jump;
+use algorithms::data_structure::array::transpose_matrix;
 use algorithms::google::eggs::{
     double_eggs, for_super_eggs, for_super_eggs2, for_super_eggs3, super_eggs,
 };
