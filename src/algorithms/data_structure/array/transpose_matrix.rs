@@ -1,5 +1,5 @@
 use std::mem::swap;
-struct Solution;
+pub struct Solution;
 
 impl Solution {
     //写的不好，应该直接用 row_len 跟 col_len两层遍历
