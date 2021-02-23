@@ -1,7 +1,6 @@
-use std::ops::{Deref, DerefMut};
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
-    Arc, Barrier,
+    Arc,
 };
 use std::thread::*;
 

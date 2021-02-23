@@ -1,6 +1,5 @@
 mod thread;
 
-use thread as thread_game;
 #[cfg(test)]
 mod tests {
     #[test]

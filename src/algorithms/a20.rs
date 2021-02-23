@@ -1,5 +1,4 @@
 pub struct Solution20;
-use std::iter::Iterator;
 
 impl Solution20 {
     pub fn is_valid(mut s: String) -> bool {

@@ -1,7 +1,7 @@
 ///https://www.zhihu.com/question/19690210
 /// https://zhuanlan.zhihu.com/p/39816314
 /// 知乎提解
-use std::cmp::{max, min};
+use std::cmp::max;
 
 /// 两个蛋时，用的函数
 /// 求的是：最坏多少次能找出来，结果要的是一个最优策略（不是临界层在哪一个，因为根本不知道哪一个）
@@ -135,7 +135,7 @@ pub fn for_super_eggs(height: i32, eggs_num: i32) -> i32 {
     //grid[0][0] = 4;
 
     let mut grid_raw = vec![0; (height + 1) * (eggs_num + 1)];
-    let mut grid_base: Vec<_> = grid_raw.as_mut_slice().chunks_mut((eggs_num + 1)).collect();
+    let mut grid_base: Vec<_> = grid_raw.as_mut_slice().chunks_mut(eggs_num + 1).collect();
     let height_t_eggs: &mut [&mut [_]] = grid_base.as_mut_slice();
 
     for i in 0..(height + 1) {
@@ -207,7 +207,7 @@ pub fn for_super_eggs2(height: i32, eggs_num: i32) -> i32 {
         current.push(i);
     }
 
-    for j in 2..(eggs_num + 1) {
+    for _j in 2..(eggs_num + 1) {
         for i in 1..(height + 1) {
             for k in 1..i {
                 if result[i] > (max(current[k - 1], result[i - k]) + 1) {

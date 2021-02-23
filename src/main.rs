@@ -1,13 +1,7 @@
 mod algorithms;
 mod thread;
-use algorithms::a1::two_sum;
+
 use algorithms::a20::Solution20;
-use algorithms::a55::can_jump;
-use algorithms::data_structure::array::transpose_matrix;
-use algorithms::google::eggs::{
-    double_eggs, for_super_eggs, for_super_eggs2, for_super_eggs3, super_eggs,
-};
-use thread::t1114::exec;
 
 use algorithms::data_structure::array::toeplitz_matrix::Solution;
 //TODO: 把不同的题解运行demo，分发到不同的 examples 下。
