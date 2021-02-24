@@ -16,7 +16,7 @@ use std::thread::*;
 /// join是用作，所有的子线程都在父线程的生命周期内退出，所以调试终端关闭之前结果都能看见
 ///
 /// 3.滥用递归会导致，爆栈内存 ，可以用循环实现
-trait syncOpration {
+trait SyncOpration {
     fn one(&self) {
         println!("one");
     }
@@ -30,7 +30,7 @@ trait syncOpration {
     }
 }
 
-impl syncOpration for AtomicUsize {
+impl SyncOpration for AtomicUsize {
     fn one(&self) {
         println!("one");
         self.fetch_add(1, Ordering::SeqCst);
@@ -56,20 +56,21 @@ impl syncOpration for AtomicUsize {
     }
 }
 
+#[allow(dead_code)]
 pub fn exec(arr: [u32; 3]) {
     let num = Arc::new(AtomicUsize::new(0));
 
-    // let mut joinArr :[JoinHandle<()>;3] = [];
-    let mut joinArr = Vec::new();
+    // let mut join_arr :[JoinHandle<()>;3] = [];
+    let mut join_arr = Vec::new();
 
     for i in arr.iter() {
-        let syncNum = num.clone();
+        let sync_num = num.clone();
 
         let join: JoinHandle<()> = match i {
-            1 => spawn(move || syncNum.one()),
-            2 => spawn(move || syncNum.two()),
+            1 => spawn(move || sync_num.one()),
+            2 => spawn(move || sync_num.two()),
 
-            3 => spawn(move || syncNum.three()),
+            3 => spawn(move || sync_num.three()),
 
             _ => {
                 println!("???");
@@ -77,10 +78,10 @@ pub fn exec(arr: [u32; 3]) {
                 return;
             }
         };
-        joinArr.push(join);
+        join_arr.push(join);
     }
 
-    for join in joinArr {
-        join.join();
+    for join in join_arr {
+        join.join().unwrap();
     }
 }

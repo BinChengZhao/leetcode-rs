@@ -51,12 +51,13 @@ pub fn double_eggs(height: usize) -> usize {
 /// 假设，每次最优的间隔是K，总楼层高度是T，鸡蛋的个数是N
 /// 那我们第一次在K楼扔的时候，后会两种情况：碎或者不碎
 /// Case1：如果碎了那就，在 需要用 ，N -1 个蛋，在 k-1层中寻找
-/// Case2：如果不碎我们就得，在 T-K 个楼层用 N个蛋寻找
+/// Case2：如果不碎我们就得，在 T-k 个楼层用 N个蛋寻找
 /// 总的可能性就是 Max（（k-1，n-1），（T-k，n））+1
 /// +1 是因为，初始在k层扔了一次  ，max 中是扔了一次之后，两种情况对应的次数中：挑一个最大值（因为我们求得是最坏情况）
 /// 当我们在公式推倒出来后，我们可以使用遍历的方法，从k=1 到 k<=T ,种种情况挨个计算
 /// 求出一个最优解的最坏次数，也就是求一个最小值
 /// ps：感谢李永乐老师
+#[allow(dead_code)]
 pub fn super_eggs(height: usize, eggs_num: usize) -> usize {
     if height == 0 {
         return 0;
@@ -100,6 +101,7 @@ pub fn super_eggs(height: usize, eggs_num: usize) -> usize {
 /// 空间复杂度为 O(hn)
 ///   ，很明显，空间上可以优化到  O(h)  ，原因是状态转移方程只和  m 与 m-1有关
 ///  有关，使用两个数组滚动即可
+#[allow(dead_code)]
 pub fn for_super_eggs(height: i32, eggs_num: i32) -> i32 {
     let height = height as usize;
     let eggs_num = eggs_num as usize;
@@ -181,6 +183,7 @@ pub fn for_super_eggs(height: i32, eggs_num: i32) -> i32 {
 }
 
 ///空间复杂度优化版本
+#[allow(dead_code)]
 pub fn for_super_eggs2(height: i32, eggs_num: i32) -> i32 {
     let height = height as usize;
     let eggs_num = eggs_num as usize;
@@ -223,29 +226,30 @@ pub fn for_super_eggs2(height: i32, eggs_num: i32) -> i32 {
 
 ///
 ///
+#[allow(dead_code)]
 pub fn for_super_eggs3(height: i32, eggs_num: i32) -> i32 {
-    let N = height as usize;
-    let K = eggs_num as usize;
-    let mut dp = vec![0; N + 1];
+    let n = height as usize;
+    let k = eggs_num as usize;
+    let mut dp = vec![0; n + 1];
 
-    //N<=1,都返回1
-    if N == 0 {
+    //n<=1,都返回1
+    if n == 0 {
         return 1;
     }
 
-    for i in 0..N + 1 {
+    for i in 0..n + 1 {
         //记录一个错误，一开始把
         // dp[i] = i; 写成 dp.push(i)了
         //因为一开始已经初始化过了，导致正确的值都追加到后面了
         dp[i] = i;
     }
 
-    for _ in 2..K + 1 {
-        let mut dp2 = vec![0; N + 1];
+    for _ in 2..k + 1 {
+        let mut dp2 = vec![0; n + 1];
         let mut x = 1;
         dp2[0] = 0;
 
-        for n in 1..N + 1 {
+        for n in 1..n + 1 {
             loop {
                 if x < n && max(dp[x - 1], dp2[n - x]) >= max(dp[x], dp2[n - x - 1]) {
                     x = x + 1;
@@ -260,5 +264,5 @@ pub fn for_super_eggs3(height: i32, eggs_num: i32) -> i32 {
         dp = dp2;
     }
 
-    return dp[N] as i32;
+    return dp[n] as i32;
 }

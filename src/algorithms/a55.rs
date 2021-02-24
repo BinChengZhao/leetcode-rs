@@ -59,19 +59,19 @@
 pub fn can_jump(nums: Vec<i32>) -> bool {
     let nums_len: usize = nums.len();
     let mut index: usize = 0;
-    let mut step: usize = 0;
+    let mut step: usize;
 
     //临时位置对应的下标
-    let mut tmp_index = 0;
+    let mut tmp_index;
 
     //在当前位置，配合下一步可以走出的最远位置
-    let mut best_index = 0;
+    let mut best_index;
 
     //计步器
-    let mut tmp_step = 0;
+    let mut tmp_step;
 
     //在当前位置，最佳走几步
-    let mut best_step = 1;
+    let mut best_step;
     // let mut element = 0;
     loop {
         step = nums[index] as usize;

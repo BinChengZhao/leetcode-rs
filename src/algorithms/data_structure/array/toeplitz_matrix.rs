@@ -5,10 +5,10 @@ impl Solution {
         let len = matrix[0].len();
         let dep = matrix.len();
 
-        let mut row_index = 0;
-        let mut col_index = 0;
+        let mut row_index;
+        let mut col_index;
 
-        let mut row_first_element = 0;
+        let mut row_first_element;
 
         for i in 0..dep {
             for j in 0..len {
