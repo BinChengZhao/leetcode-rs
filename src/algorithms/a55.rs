@@ -44,13 +44,13 @@
 /// 如果可以一直跳到最后，就成功了。
 /// bool canJump(vector<int>& nums)
 ///{
-///	int k = 0;
-///	for (int i = 0; i < nums.size(); i++)
-///	{
-///		if (i > k) return false;
-///		k = max(k, i + nums[i]);
-///	}
-///	return true;
+///    int k = 0;
+///    for (int i = 0; i < nums.size(); i++)
+///    {
+///    if (i > k) return false;
+///    k = max(k, i + nums[i]);
+///    }
+///    return true;
 ///}
 ///
 ///
@@ -99,19 +99,19 @@ pub fn can_jump(nums: Vec<i32>) -> bool {
                     break;
                 }
 
-                tmp_step = tmp_step + 1;
+                tmp_step += 1;
                 tmp_index = index + tmp_step + nums[index + tmp_step] as usize;
 
                 //如果获取了更远的地址，就更新
                 if tmp_index > best_index {
                     best_index = tmp_index;
-                    best_step = tmp_step;
+                    // best_step = tmp_step;
                 }
             }
 
             //计算下标
             // println!("best _ step : {}", best_step);
-            index = best_step + index;
+            index += index;
         }
     }
 }

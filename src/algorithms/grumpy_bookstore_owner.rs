@@ -17,13 +17,13 @@
 //
 
 // x = n ;
-// 这个n代表可以让 grumpy 连续n个元素为 1
+// 这个n代表可以让 grumpy 连续n个元素为 0
 //
 // 也就是说，可以让连续n个在customers的元素被累加进结果
 // 在 `customers`求相加是最大值的连续n个元素的范围， 并且考虑 `grumpy` 的影响
-// 如果`grumpy`在那段范围上，本来下标对应的值就是1， 那就不用采用这个范围。。
+// 如果`grumpy`在那段范围上，本来下标对应的值就是0， 那就不用采用这个范围。。
 //
-// 综合考虑哪段范围相加的值最大， 但因为`grumpy`0较多 值没有累加入结果。
+// 综合考虑哪段范围相加的值最大， 但因为`grumpy` 1 较多 值没有累加入结果。
 // 通过一个栈类的数据结构，记录n条数据中的没有累计计算的值，如果对应下标的值正常被累计则栈中存一个0
 //
 // 输入：customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], X = 3
@@ -73,8 +73,7 @@ impl Solution1052 {
             // cursor_stack.push(i);
 
             // v.remove(0) eq v.shift()
-            current_losses_val_of_chunk =
-                current_losses_val_of_chunk - cursor_stack_of_losses.remove(0);
+            current_losses_val_of_chunk -= cursor_stack_of_losses.remove(0);
 
             if grumpy_vec.next().unwrap() == 1 {
                 current_losses_val_of_chunk += i;

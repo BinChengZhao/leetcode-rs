@@ -37,7 +37,7 @@ pub fn double_eggs(height: usize) -> usize {
         }
     }
 
-    return 0;
+    0
 }
 
 ///现在我们知道问题，不在于100层楼两个蛋，而是在于不定的楼层，与不定个数的蛋，最优的策略跟最坏的次数
@@ -81,7 +81,7 @@ pub fn super_eggs(height: usize, eggs_num: usize) -> usize {
         results.push(tmp_result);
     }
 
-    results.sort();
+    results.sort_unstable();
 
     *results.first().unwrap()
 }
@@ -163,7 +163,7 @@ pub fn for_super_eggs(height: i32, eggs_num: i32) -> i32 {
             }
 
             //todo 提现拿出第一个，循环里面就少一个判断
-            let mut tmp_max = max(height_t_eggs[1 - 1][j - 1], height_t_eggs[i - 1][j]) + 1;
+            let mut tmp_max = max(height_t_eggs[0][j - 1], height_t_eggs[i - 1][j]) + 1;
 
             for k in 2..i {
                 let tmp_choice = max(height_t_eggs[k - 1][j - 1], height_t_eggs[i - k][j]) + 1;
@@ -237,11 +237,11 @@ pub fn for_super_eggs3(height: i32, eggs_num: i32) -> i32 {
         return 1;
     }
 
-    for i in 0..n + 1 {
+    for (i, item) in dp.iter_mut().enumerate() {
         //记录一个错误，一开始把
         // dp[i] = i; 写成 dp.push(i)了
         //因为一开始已经初始化过了，导致正确的值都追加到后面了
-        dp[i] = i;
+        *item = i;
     }
 
     for _ in 2..k + 1 {
@@ -252,7 +252,7 @@ pub fn for_super_eggs3(height: i32, eggs_num: i32) -> i32 {
         for n in 1..n + 1 {
             loop {
                 if x < n && max(dp[x - 1], dp2[n - x]) >= max(dp[x], dp2[n - x - 1]) {
-                    x = x + 1;
+                    x += 1;
                 } else {
                     break;
                 }
@@ -264,5 +264,5 @@ pub fn for_super_eggs3(height: i32, eggs_num: i32) -> i32 {
         dp = dp2;
     }
 
-    return dp[n] as i32;
+    dp[n] as i32
 }

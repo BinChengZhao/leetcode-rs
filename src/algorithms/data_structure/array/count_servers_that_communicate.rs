@@ -17,32 +17,24 @@ impl Solution {
                     continue;
                 }
 
-                if i != 0 {
-                    if grid[i - 1][j] == 1 {
-                        count = count + 1;
-                        continue;
-                    }
+                if i != 0 && grid[i - 1][j] == 1 {
+                    count += 1;
+                    continue;
                 }
 
-                if j != 0 {
-                    if grid[i][j - 1] == 1 {
-                        count = count + 1;
-                        continue;
-                    }
+                if j != 0 && grid[i][j - 1] == 1 {
+                    count += 1;
+                    continue;
                 }
 
-                if i != max_row {
-                    if grid[i + 1][j] == 1 {
-                        count = count + 1;
-                        continue;
-                    }
+                if i != max_row && grid[i + 1][j] == 1 {
+                    count += 1;
+                    continue;
                 }
 
-                if j != max_col {
-                    if grid[i][j + 1] == 1 {
-                        count = count + 1;
-                        continue;
-                    }
+                if j != max_col && grid[i][j + 1] == 1 {
+                    count += 1;
+                    continue;
                 }
             }
         }

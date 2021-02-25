@@ -9,10 +9,10 @@ impl Solution {
         while index < len {
             if nums[index] == val {
                 nums.swap_remove(index);
-                len = len - 1;
+                len -= 1;
                 continue;
             }
-            index = index + 1;
+            index += 1;
         }
 
         len as i32
