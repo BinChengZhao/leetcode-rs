@@ -27,39 +27,51 @@ fn main() {
     // let t = 9;
     // two_sum(v, t);
 
-    dbg!(Solution1052::max_satisfied(
-        vec![1, 0, 1, 2, 1, 1, 7, 5],
-        vec![0, 1, 0, 1, 0, 1, 0, 1],
-        3
-    ));
+    let v1 = vec![1, 0, 1, 2, 1, 1, 7, 5];
+    let v2 = vec![0, 1, 0, 1, 0, 1, 0, 1];
+    let l = 3;
+    debug_assert_eq!(
+        Solution1052::max_satisfied(v1.clone(), v2.clone(), l),
+        Solution1052::max_satisfied2(v1, v2, l as usize)
+    );
 
-    dbg!(Solution1052::max_satisfied(
-        vec![1, 0, 1, 2, 1, 1, 7, 5],
-        vec![0, 1, 0, 1, 0, 1, 0, 1],
-        5
-    ));
+    let v1 = vec![1, 0, 1, 2, 1, 1, 7, 5];
+    let v2 = vec![0, 1, 0, 1, 0, 1, 0, 1];
+    let l = 5;
+    debug_assert_eq!(
+        Solution1052::max_satisfied(v1.clone(), v2.clone(), l),
+        Solution1052::max_satisfied2(v1, v2, l as usize)
+    );
 
-    dbg!(Solution1052::max_satisfied(
-        vec![1, 0, 1, 9, 2, 1, 7, 5],
-        vec![1, 1, 1, 0, 0, 1, 0, 1],
-        5
-    ));
+    let v1 = vec![1, 0, 1, 9, 2, 1, 7, 5];
+    let v2 = vec![1, 1, 1, 0, 0, 1, 0, 1];
+    let l = 5;
+    debug_assert_eq!(
+        Solution1052::max_satisfied(v1.clone(), v2.clone(), l),
+        Solution1052::max_satisfied2(v1, v2, l as usize)
+    );
 
-    dbg!(Solution1052::max_satisfied(
-        vec![1, 0, 1, 2, 0, 1, 0, 0],
-        vec![0, 1, 0, 1, 0, 1, 0, 0],
-        2
-    ));
+    let v1 = vec![1, 0, 1, 2, 0, 1, 0, 0];
+    let v2 = vec![0, 1, 0, 1, 0, 1, 0, 0];
+    let l = 2;
+    debug_assert_eq!(
+        Solution1052::max_satisfied(v1.clone(), v2.clone(), l),
+        Solution1052::max_satisfied2(v1, v2, l as usize)
+    );
 
-    dbg!(Solution1052::max_satisfied(
-        vec![1, 9, 1, 2, 9, 9, 9, 5],
-        vec![0, 0, 0, 1, 0, 0, 0, 1],
-        7
-    ));
+    let v1 = vec![1, 9, 1, 2, 9, 9, 9, 5];
+    let v2 = vec![0, 0, 0, 1, 0, 0, 0, 1];
+    let l = 7;
+    debug_assert_eq!(
+        Solution1052::max_satisfied(v1.clone(), v2.clone(), l),
+        Solution1052::max_satisfied2(v1, v2, l as usize)
+    );
 
-    dbg!(Solution1052::max_satisfied(
-        vec![1, 0, 1, 2, 1, 1, 7, 5],
-        vec![0, 1, 0, 1, 0, 1, 0, 1],
-        3
-    ));
+    let v1 = vec![1, 0, 1, 2, 1, 1, 7, 5];
+    let v2 = vec![0, 1, 0, 1, 0, 1, 0, 1];
+    let l = 3;
+    debug_assert_eq!(
+        Solution1052::max_satisfied(v1.clone(), v2.clone(), l),
+        Solution1052::max_satisfied2(v1, v2, l as usize)
+    );
 }

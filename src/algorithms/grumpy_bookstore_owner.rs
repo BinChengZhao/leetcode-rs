@@ -93,4 +93,48 @@ impl Solution1052 {
         }
         total_num + max_losses_val_of_chunk
     }
+
+    pub fn max_satisfied2(customers: Vec<i32>, grumpy: Vec<i32>, x: usize) -> i32 {
+        let mut total_num = 0;
+
+        let mut max_losses_val_of_chunk: i32;
+        let mut current_losses_val_of_chunk: i32 = 0;
+
+        let customers_vec = customers.iter();
+        let grumpy_vec = grumpy.iter();
+
+        let mut zip_iter = customers_vec.zip(grumpy_vec);
+
+        for _ in 0..x {
+            let (c, g) = zip_iter.next().unwrap();
+
+            if g == &0 {
+                total_num += c;
+            } else {
+                current_losses_val_of_chunk += c;
+            }
+        }
+
+        max_losses_val_of_chunk = current_losses_val_of_chunk;
+
+        for (index, (c, g)) in zip_iter.enumerate() {
+            if grumpy[index] == 1 {
+                current_losses_val_of_chunk -= customers[index];
+            }
+
+            if g == &0 {
+                total_num += c;
+                continue;
+            } else {
+                current_losses_val_of_chunk += c;
+            }
+
+            if current_losses_val_of_chunk > max_losses_val_of_chunk {
+                max_losses_val_of_chunk = current_losses_val_of_chunk;
+            }
+
+            // Check what the value of this block of data is because grumpy-chunks is 0 and not cumulative.
+        }
+        total_num + max_losses_val_of_chunk
+    }
 }
