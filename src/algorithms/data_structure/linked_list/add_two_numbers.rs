@@ -70,7 +70,7 @@ impl Solution {
             // the overflow value plus to next value.
             if value >= 10 {
                 overflow = value / 10;
-                value = value % 10;
+                value %= 10;
             } else {
                 overflow = 0;
             }

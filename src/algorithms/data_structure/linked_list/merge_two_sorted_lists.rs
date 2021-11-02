@@ -101,15 +101,14 @@ impl Solution {
 // }
 ////////// Copied Best performance code /////////////
 
-
 ////////// The code for my ideal effect copied from leetcode. /////////////
 // impl Solution {
 //     pub fn merge_two_lists(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 //         let mut result = Box::new(ListNode::new(-1));
 //         let mut to_add = &mut result.next;
-        
+
 //         let (mut l1, mut l2) = (&l1, &l2);
-        
+
 //         loop {
 //             match (l1, l2){
 //                 (Some(l), Some(r)) if l.val < r.val => {
@@ -135,8 +134,7 @@ impl Solution {
 //                 _ => return result.next
 //             }
 //         }
-        
+
 //     }
 // }
 ////////// The code for my ideal effect copied from leetcode. /////////////
-
