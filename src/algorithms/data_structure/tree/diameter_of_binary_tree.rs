@@ -22,14 +22,14 @@ use std::rc::Rc;
 struct Solution;
 impl Solution {
     // For every node, length of longest path which pass it = MaxDepth of its left subtree + MaxDepth of its right subtree.
-   
-    // The root node is not necessarily the longest diameter node, 
+
+    // The root node is not necessarily the longest diameter node,
     // example：
     // [4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2]
-   
-    // So each node needs to calculate whether its own diameter is the longest 
+
+    // So each node needs to calculate whether its own diameter is the longest
     // when calculating depth.
-   
+
     pub fn diameter_of_binary_tree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         let mut max_diameter = 0;
         Solution::check_level(root, &mut max_diameter);
