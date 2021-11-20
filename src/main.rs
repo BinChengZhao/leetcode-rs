@@ -14,11 +14,9 @@ fn main() {
 
     tree.pre_order_recursive();
 
-    println!("");
-    println!("");
+    println!();
 
     tree.pre_order_loop();
 
-    println!("");
-    println!("");
+    println!();
 }
